@@ -11,13 +11,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
-// app.get("/video", (req, res) => {
-//     res.writeHead(206, {
-//         "Content-Type": "bytes",
-//     });
-//     video.pipe(res);
-// });
 
 const mediaserver = new nodeMediaServer(rtmpServer);
 mediaserver.run();
-app.listen(8001);
+app.listen(8001, () => console.log("express server started on port 8001"));
